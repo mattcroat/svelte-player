@@ -9,6 +9,6 @@
   name="volume"
   type="range"
   min="0"
-  max="100"
-  step="1"
+  max="1"
+  step="0.025"
 />

@@ -14,7 +14,7 @@
   let playingState: Playing = 'paused'
   let duration = 0
   let elapsed = 0
-  let volume = 50
+  let volume = 0.5
 
   if (browser) {
     loadTrack()
@@ -25,6 +25,7 @@
     track.onloadedmetadata = updateDuration
     track.ontimeupdate = updateElapsed
     track.onended = playNextTrack
+    track.volume = volume
   }
 
   function togglePlaying() {
@@ -70,12 +71,12 @@
   }
 
   function updateVolume() {
-    track.volume = volume / 100 // 50 / 100 = 0.5
+    track.volume = volume
   }
 </script>
 
 <svelte:head>
-  <title>Fire</title>
+  <title>Svelte player</title>
 </svelte:head>
 
 <Playlist {playlist}>
