@@ -33,6 +33,11 @@
   }
 
   function playTrack() {
+    if (playingState === 'playing') {
+      pauseTrack()
+      loadTrack()
+    }
+
     playingState = 'playing'
     track.play()
   }
@@ -47,18 +52,16 @@
       track.currentTime = 0
     }
 
-    if (elapsed === 0) {
-      if (trackIndex > 0) {
-        trackIndex -= 1
-        loadTrack()
-      }
+    if (elapsed < 1 && trackIndex > 0) {
+      trackIndex -= 1
+      playTrack()
     }
   }
 
   function playNextTrack() {
     if (trackIndex < playlist.tracks.length - 1) {
       trackIndex += 1
-      loadTrack()
+      playTrack()
     }
   }
 
